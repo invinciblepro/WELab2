@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            JS Classes Demo
+        </title>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <!-- JavaScript Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    </head>
+    <body style="text-align: center;" class="jumbotron">
+        <div>
+            <h1>
+                JS classes Demo
+            </h1>
+            <form>
+                Name : 
+                <input type="text" id="name">
+                <br/>
+                <br/>
+                Roll Number : 
+                <input type="text" id="rollno">
+                <br/>
+                <br/>
+                Branch : 
+                <input type="text" id="branch">
+                <br/>
+                <br/>
+            </form>
+            <button onclick="create()">
+                Create a class object
+            </button>
+            <br/>
+            <br/>
+            <button onclick="display()">
+                Display all the classes
+            </button>
+            <div style="padding-top: 10px;" id="res">
+
+            </div>
+        </div>
+        <script>
+            class Student
+            {
+                // var name,rollno,branch;
+                constructor(name,rollno,branch)
+                {
+                    this.name=name;
+                    this.rollno=rollno;
+                    this.branch=branch;
+                }
+                display()
+                {
+                    console.log("Display function");
+                }
+            }
+            let l=[]
+            let create = () =>
+            {
+                var name=document.getElementById("name").value;
+                var rollno=document.getElementById("rollno").value;
+                var branch=document.getElementById("branch").value;
+                var obj=new Student(name,rollno,branch);
+                l.push(obj);
+                document.getElementById("res").innerHTML="New Student object created successfully"
+            }
+            let display = () =>
+            {
+                if(l.length==0)
+                {
+                    document.getElementById("res").innerHTML="No objects created";
+                }
+                else
+                {
+                    var res="The objects are <br/>";
+                    for(var i=0;i<l.length;i++)
+                    {
+                        var st="Student "+(i+1)+" details "+"<br/>"+"Name : "+l[i].name+"<br/>"+"Roll number : "+l[i].rollno+"<br/>"+"Branch : "+l[i].branch;
+                        res=res+st+"<br/><br/>";
+                    }
+                    document.getElementById("res").innerHTML=res;
+                }
+            }            
+        </script>
+    </body>
+</html>
